@@ -1,19 +1,23 @@
-app = "sinais-b3-bot"
+# fly.toml app configuration file generated for sinais-b3-bot on 2025-06-08T15:47:22Z
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'sinais-b3-bot'
+primary_region = 'gru'
 
 [build]
 
-[env]
-  TELEGRAM_TOKEN = "seu_token_aqui"
-  TELEGRAM_CHAT_ID = "seu_chat_id_aqui"
-  ALPHA_VANTAGE_KEY = "sua_key_principal_aqui"
-
-[processes]
-  app = "python bot.py"
-
-[[services]]
+[http_service]
   internal_port = 8080
-  protocol = "tcp"
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
 
-  [[services.ports]]
-    port = 8080
-    handlers = []
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
+  memory_mb = 1024
