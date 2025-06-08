@@ -1,0 +1,17 @@
+app = "sinais-b3-bot"
+primary_region = "gru"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  ALPHA_VANTAGE_KEY = "9TD7G0C74UW5DZ33"
+  CHAT_ID = "8096378641"
+
+[[services]]
+  internal_port = 8080
+  protocol = "tcp"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
