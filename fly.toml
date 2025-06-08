@@ -1,10 +1,14 @@
 app = "sinais-b3-bot"
 
 [build]
-  dockerfile = "Dockerfile"
 
 [env]
-  PORT = "8080"
+  TELEGRAM_TOKEN = "seu_token_aqui"
+  TELEGRAM_CHAT_ID = "seu_chat_id_aqui"
+  ALPHA_VANTAGE_KEY = "sua_key_principal_aqui"
+
+[processes]
+  app = "python bot.py"
 
 [[services]]
   internal_port = 8080
